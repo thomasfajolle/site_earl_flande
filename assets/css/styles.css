@@ -40,3 +40,10 @@ body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarel
 .muted{color:var(--muted)}
 .site-footer{margin-top:40px;border-top:1px solid var(--border);background:var(--surface)}
 .footer-inner{height:64px;display:flex;align-items:center}
+
+/* Ligne image + liste catégorie */
+.category-row{display:grid;grid-template-columns:1fr 320px;gap:12px;align-items:start}
+.category-row img{width:100%;height:auto;max-width:320px;border-radius:10px;border:1px solid var(--border);display:block}
+@media (max-width: 720px){
+  .category-row{grid-template-columns:1fr}
+}
