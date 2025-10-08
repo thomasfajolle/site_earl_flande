@@ -1,0 +1,7 @@
+{
+  "images": [
+    { "src": "assets/img/galerie/sample-1.jpg", "alt": "Ferme EARL FLANDE" },
+    { "src": "assets/img/galerie/sample-2.jpg", "alt": "Culture de framboises" },
+    { "src": "assets/img/galerie/sample-3.jpg", "alt": "Rangées d'asperges" }
+  ]
+}

@@ -4,23 +4,21 @@ Site vitrine de l’exploitation agricole familiale EARL FLANDE.
 
 ## Objectif
 
-Créer un petit site vitrine, accessible uniquement via un lien direct ou un QR code (affiché à l’entrée du point de vente), présentant la ferme, les produits vendus et des explications sur les cultures.
+Créer un petit site vitrine, accessible uniquement via un lien direct ou un QR code (affiché à l’entrée du point de vente), présentant la ferme, les produits vendus et des explications sur les cultures. Le site est désormais 100% statique (HTML/CSS/JS) afin d’être hébergé facilement sur GitHub Pages.
 
-Aucune fonctionnalité publique avancée n’est prévue (pas de formulaire, pas de blog, pas de référencement). L’accent est mis sur la clarté, la rapidité et l’accès privé via QR code.
+## Pages
 
-## Pages prévues
-
-- Page d’accueil (`index.php`)
+- Page d’accueil (`index.html`)
 	- Présentation de la ferme (texte + 2–3 blocs clés: qui sommes-nous, où nous trouver, période d’activité).
 	- Galerie photos intégrée sur la page d’accueil (slider ou grille légère, avec lazy-loading des images).
 	- Coordonnées essentielles (adresse, lien vers carte, lien vers la page Produits).
 
-- Page Produits et horaires (`produits.php`)
+- Page Produits et horaires (`produits.html`)
 	- Liste des produits : framboises et asperges.
 	- Prix (à renseigner et mettre à jour facilement).
 	- Horaires de vente (à renseigner et mettre à jour facilement).
 
-- Page Cultures (`cultures.php`)
+- Page Cultures (`cultures.html`)
 	- Explications sur les deux cultures : framboises et asperges.
 	- Comment elles sont semées/plantées, comment elles sont récoltées.
 	- Périodes de vente dans l’année.
@@ -31,29 +29,27 @@ Aucune fonctionnalité publique avancée n’est prévue (pas de formulaire, pas
 - Pas d’indexation : ajout d’un meta `noindex, nofollow` sur toutes les pages (et optionnellement un `robots.txt` qui bloque tout).
 - Pas de cookies ni de traqueurs.
 
-## Arborescence prévue
+## Arborescence
 
 ```
 .
-├─ index.php          # Accueil + galerie photos
-├─ produits.php       # Produits (framboises, asperges), prix, horaires
-├─ cultures.php       # Explications sur les cultures et périodes de vente
+├─ index.html         # Accueil + galerie photos (dynamique côté client)
+├─ produits.html      # Produits (framboises, asperges), prix, horaires
+├─ cultures.html      # Explications sur les cultures et périodes de vente
 ├─ assets/
 │  ├─ css/
 │  │  └─ styles.css   # Styles communs et responsive
 │  ├─ img/
-│  │  ├─ galerie/     # Photos de la ferme et des produits
+│  │  ├─ galerie/     # Photos de la ferme et des produits + images.json
 │  │  └─ ui/          # Logos/illustrations si besoin
 │  └─ js/
 │     └─ main.js      # JS léger (slider/galerie, menu mobile si nécessaire)
-└─ includes/
-	 ├─ header.php      # En-tête HTML commun (meta noindex, CSS)
-	 └─ footer.php      # Pied de page (mentions minimales)
+└─ robots.txt         # Blocage d’indexation
 ```
 
 ## Lignes directrices techniques
 
-- Stack simple : PHP côté serveur (sans base de données), HTML/CSS/JS.
+- Stack simple : HTML/CSS/JS statique (compatible GitHub Pages).
 - Responsive : mise en page adaptée aux mobiles (public principal via QR code sur place).
 - Performance :
 	- Images optimisées (WebP/JPEG), tailles adaptées, lazy-loading.
@@ -67,7 +63,17 @@ Aucune fonctionnalité publique avancée n’est prévue (pas de formulaire, pas
 	- Framboises : formats/disponibilités, prix (à préciser), période de vente.
 	- Asperges : types/formats, prix (à préciser), période de vente.
 - Horaires de vente (jours/horaires exacts).
-- Photos pour la galerie (10–20 photos sélectionnées, optimisées).
+- Photos pour la galerie (10–20 photos sélectionnées, optimisées) + mise à jour du fichier `assets/img/galerie/images.json`.
+
+## Déploiement sur GitHub Pages
+
+1. Pousser la branche `main` sur GitHub.
+2. Dans Settings > Pages, choisir la source `Deploy from a branch`, branch `main`, dossier `/root` (racine), puis sauvegarder.
+3. L’URL de publication sera fournie par GitHub. Générer ensuite un QR code vers cette URL.
+
+Notes GitHub Pages:
+- Les pages sont statiques. La galerie est construite côté client à partir de `assets/img/galerie/images.json`.
+- Pour ajouter ou retirer des photos, uploadez les fichiers dans `assets/img/galerie/` et mettez à jour `images.json` en listant les chemins (relatifs au site) et les légendes.
 
 ## Prochaines étapes
 
@@ -81,4 +87,4 @@ Aucune fonctionnalité publique avancée n’est prévue (pas de formulaire, pas
 
 ---
 
-Dernière mise à jour : 2025-10-08
+Dernière mise à jour : 2025-10-08 (version statique)
